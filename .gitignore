@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Backup files
+*.backup-*
+*.backup
+
+# Dev artifacts
+raw_pdf_*.txt
+pdf_parser.py
