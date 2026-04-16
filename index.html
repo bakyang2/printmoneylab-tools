@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online Tools & Calculators | PrintMoneyLab Tools</title>
+    <meta name="description" content="Free calculators, comparators and simulators for AI, finance, pets, and everyday life. No signup required — just useful tools that save you time and money.">
+    <link rel="canonical" href="https://tools.printmoneylab.com/">
+    <meta property="og:title" content="Free Online Tools & Calculators | PrintMoneyLab Tools">
+    <meta property="og:description" content="Free calculators, comparators and simulators. No signup required.">
+    <meta property="og:url" content="https://tools.printmoneylab.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="PrintMoneyLab Tools">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "PrintMoneyLab Tools",
+        "url": "https://tools.printmoneylab.com",
+        "description": "Free online calculators, comparators and simulators",
+        "publisher": {
+            "@type": "Organization",
+            "name": "PrintMoneyLab"
+        }
+    }
+    </script>
+    <style>
+        :root {
+            --bg-primary: #0f1117;
+            --bg-secondary: #161822;
+            --bg-card: #1c1f2e;
+            --bg-card-hover: #242840;
+            --text-primary: #e8e9ed;
+            --text-secondary: #9a9db0;
+            --text-muted: #6b6e82;
+            --accent: #d4a843;
+            --accent-glow: rgba(212, 168, 67, 0.15);
+            --accent-hover: #e6bc5a;
+            --border: rgba(255,255,255,0.06);
+            --radius: 12px;
+            --radius-lg: 20px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(15, 17, 23, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .nav-logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700; font-size: 1.15rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .nav-logo .logo-mark {
+            width: 28px; height: 28px;
+            background: linear-gradient(135deg, var(--accent), #b8912e);
+            border-radius: 7px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.85rem; font-weight: 700; color: #0f1117;
+        }
+        .nav-links { display: flex; gap: 28px; }
+        .nav-links a {
+            font-size: 0.9rem; color: var(--text-secondary);
+            text-decoration: none; font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .nav-mobile-btn {
+            display: none; background: none; border: none;
+            color: var(--text-primary); font-size: 1.5rem; cursor: pointer;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 140px 24px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 800px; height: 500px;
+            background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 6px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.8rem; color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            animation: fadeInDown 0.6s ease-out;
+        }
+        .hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            animation: fadeInDown 0.6s ease-out 0.1s both;
+        }
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--accent), #e6bc5a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.15rem; color: var(--text-secondary);
+            max-width: 560px; margin: 0 auto 40px;
+            animation: fadeInDown 0.6s ease-out 0.2s both;
+        }
+        .hero-stats {
+            display: flex; justify-content: center; gap: 48px;
+            animation: fadeInDown 0.6s ease-out 0.3s both;
+        }
+        .hero-stat { text-align: center; }
+        .hero-stat .num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem; font-weight: 700; color: var(--accent);
+        }
+        .hero-stat .label {
+            font-size: 0.8rem; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        /* SECTIONS */
+        .section {
+            max-width: 1200px; margin: 0 auto;
+            padding: 80px 24px;
+        }
+        .section-header {
+            margin-bottom: 48px;
+        }
+        .section-label {
+            font-size: 0.78rem; font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem; font-weight: 600;
+        }
+
+        /* TOOL CARDS */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 20px;
+        }
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            text-decoration: none; color: inherit;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: block;
+        }
+        .tool-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(212, 168, 67, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
+        .tool-card .card-top {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        .tool-card .card-icon {
+            width: 44px; height: 44px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem;
+        }
+        .card-icon.ai { background: linear-gradient(135deg, #1a1a3e, #2a2a5e); }
+        .card-icon.pet { background: linear-gradient(135deg, #2e1a1a, #4e2a2a); }
+        .card-icon.finance { background: linear-gradient(135deg, #1a2e1a, #2a4e2a); }
+        .card-icon.tech { background: linear-gradient(135deg, #1a2e3e, #2a4e5e); }
+        .card-icon.home { background: linear-gradient(135deg, #2e2a1a, #4e3a2a); }
+        .card-icon.auto { background: linear-gradient(135deg, #1a1a2e, #3a2a4e); }
+        .card-icon.security { background: linear-gradient(135deg, #2e1a2a, #4e2a4a); }
+
+        .card-badge {
+            font-size: 0.68rem; font-weight: 600;
+            padding: 4px 10px; border-radius: 100px;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .badge-live {
+            background: rgba(76, 175, 80, 0.15); color: #66bb6a;
+        }
+        .badge-soon {
+            background: rgba(212, 168, 67, 0.12); color: var(--accent);
+        }
+        .tool-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem; font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .tool-card p {
+            font-size: 0.88rem; color: var(--text-secondary);
+            line-height: 1.55;
+        }
+        .card-tags {
+            display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap;
+        }
+        .card-tag {
+            font-size: 0.72rem;
+            padding: 3px 10px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 100px;
+            color: var(--text-muted);
+        }
+
+        /* PROJECTS SECTION */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+        }
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 22px;
+            text-decoration: none; color: inherit;
+            transition: all 0.25s ease;
+        }
+        .project-card:hover {
+            border-color: rgba(212, 168, 67, 0.15);
+            transform: translateY(-2px);
+        }
+        .project-card h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem; font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .project-card p {
+            font-size: 0.82rem; color: var(--text-secondary);
+        }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            padding: 60px 24px 100px;
+        }
+        .cta-box {
+            max-width: 600px; margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 48px 40px;
+        }
+        .cta-box h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem; font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .cta-box p {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        .cta-btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background: linear-gradient(135deg, var(--accent), #b8912e);
+            color: #0f1117; font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.25s;
+            font-size: 0.95rem;
+        }
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(212, 168, 67, 0.3);
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 24px;
+        }
+        .footer-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 16px;
+        }
+        .footer-left {
+            font-size: 0.82rem; color: var(--text-muted);
+        }
+        .footer-links {
+            display: flex; gap: 24px;
+        }
+        .footer-links a {
+            font-size: 0.82rem; color: var(--text-muted);
+            text-decoration: none; transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--text-secondary); }
+
+        <!-- ADSENSE_AD_HERE -->
+
+        /* ANIMATIONS */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            opacity: 0; transform: translateY(20px);
+            transition: all 0.5s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1; transform: translateY(0);
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-mobile-btn { display: block; }
+            .nav-links.open {
+                display: flex; flex-direction: column;
+                position: absolute; top: 64px; left: 0; right: 0;
+                background: var(--bg-primary);
+                border-bottom: 1px solid var(--border);
+                padding: 16px 24px; gap: 16px;
+            }
+            .hero { padding: 120px 20px 60px; }
+            .hero-stats { gap: 32px; }
+            .hero-stat .num { font-size: 1.4rem; }
+            .tools-grid { grid-template-columns: 1fr; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .footer-inner { flex-direction: column; text-align: center; }
+        }
+        @media (max-width: 400px) {
+            .hero-stats { flex-direction: column; gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">
+            <span class="logo-mark">P</span>
+            PrintMoneyLab Tools
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="/">Tools</a>
+            <a href="/about.html">About</a>
+            <a href="https://printmoneylab.com" target="_blank" rel="noopener">Blog</a>
+            <a href="/contact.html">Contact</a>
+        </div>
+        <button class="nav-mobile-btn" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">☰</button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-badge">✦ 100% Free — No Signup Required</div>
+    <h1>Tools That Actually<br><span class="highlight">Save You Money</span></h1>
+    <p>Free calculators, comparators, and simulators for smarter decisions — from AI costs to pet budgets to home projects.</p>
+    <div class="hero-stats">
+        <div class="hero-stat">
+            <div class="num">20+</div>
+            <div class="label">Tools Planned</div>
+        </div>
+        <div class="hero-stat">
+            <div class="num">6</div>
+            <div class="label">Categories</div>
+        </div>
+        <div class="hero-stat">
+            <div class="num">$0</div>
+            <div class="label">Always Free</div>
+        </div>
+    </div>
+</section>
+
+<!-- ADSENSE_AD_HERE -->
+
+<!-- TOOLS SECTION -->
+<section class="section fade-in">
+    <div class="section-header">
+        <div class="section-label">AI & Tech</div>
+        <h2 class="section-title">Smart Tools for the AI Era</h2>
+    </div>
+    <div class="tools-grid">
+        <div class="tool-card">
+            <div class="card-top">
+                <div class="card-icon ai">🤖</div>
+                <span class="card-badge badge-soon">Coming Soon</span>
+            </div>
+            <h3>AI API Pricing Calculator</h3>
+            <p>Compare costs across GPT-4o, Claude, Gemini, and Llama. Input your usage and see which model saves you the most.</p>
+            <div class="card-tags">
+                <span class="card-tag">ChatGPT</span>
+                <span class="card-tag">Claude</span>
+                <span class="card-tag">API Costs</span>
+            </div>
+        </div>
+        <div class="tool-card">
+            <div class="card-top">
+                <div class="card-icon tech">📶</div>
+                <span class="card-badge badge-soon">Coming Soon</span>
+            </div>
+            <h3>Internet Speed Reality Check</h3>
+            <p>Enter your Mbps and find out what you can actually do — how many streams, video calls, or gaming sessions at once.</p>
+            <div class="card-tags">
+                <span class="card-tag">Streaming</span>
+                <span class="card-tag">Gaming</span>
+                <span class="card-tag">Speed Test</span>
+            </div>
+        </div>
+        <div class="tool-card">
+            <div class="card-top">
+                <div class="card-icon tech">💾</div>
+                <span class="card-badge badge-soon">Coming Soon</span>
+            </div>
+            <h3>Storage Calculator</h3>
+            <p>Photos, videos, games, music — enter what you store and find out exactly how much space you need.</p>
+            <div class="card-tags">
+                <span class="card-tag">Cloud</span>
+                <span class="card-tag">Hard Drive</span>
+                <span class="card-tag">SSD</span>
+            </div>
+        </div>
+        <div class="tool-card">
+            <div class="card-top">
+                <div class="card-icon tech">🖥️</div>
+                <span class="card-badge badge-soon">Coming Soon</span>
+            </div>
+            <h3>Monitor Size & Distance Calculator</h3>
+            <p>Find the ideal viewing distance for your screen, or the right screen size for your desk setup.</p>
+            <div class="card-tags">
+                <span class="card-tag">Monitor</span>
+                <span class="card-tag">TV</span>
+                <span class="card-tag">Viewing Distance</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section fade-in">
+    <div class="section-header">
+        <div class="section-label">Money & Finance</div>
+        <h2 class="section-title">Know Exactly Where Your Money Goes</h2>
+    </div>
+    <div class="tools-grid">
+        <div class="tool-card">
+            <div class="card-top">
+                <div class="card-icon finance">💳</div>
+                <span class="card-badge badge-soon">Coming Soon</span>
+            </div>
+            <h3>Subscription Cost Tracker</h3>
+            <p>List all your subscriptions and see the real annual total — plus what that money could grow to if invested instead.</p>
+            <div class="card-tags">
+                <span class="card-tag">Netflix</span>
+                <span class="card-tag">Spotify</span>
+                <span class="card-tag">SaaS</span>
+            </div>
+        </div>
+        <div class="tool-card">
+            <div class="card-top">
+                <div class="card-icon finance">📊</div>
+                <span class="card-badge badge-soon">Coming Soon</span>
+            </div>
+            <h3>Freelance Tax Calculator (US)</h3>
+            <p>Estimate your self-employment tax, quarterly payments, and take-home pay as a 1099 freelancer.</p>
+            <div class="card-tags">
+                <span class="card-tag">1099</span>
+                <span class="card-tag">Self-employed</span>
+                <span class="card-tag">Quarterly Tax</span>
+            </div>
+        </div>
+        <div class="tool-card">
+            <div class="card-top">
+                <div class="card-icon finance">💰</div>
+                <span class="card-badge badge-soon">Coming Soon</span>
+            </div>
+            <h3>Side Hustle Income Simulator</h3>
+            <p>Pick a side hustle, set your weekly hours, and see a realistic income projection over 3, 6, and 12 months.</p>
+            <div class="card-tags">
+                <span class="card-tag">Freelance</span>
+                <span class="card-tag">Blog</span>
+                <span class="card-tag">YouTube</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ADSENSE_AD_HERE -->
+
+<section class="section fade-in">
+    <div class="section-header">
+        <div class="section-label">Pets</div>
+        <h2 class="section-title">Better Decisions for Your Best Friend</h2>
+    </div>
+    <div class="tools-grid">
+        <div class="tool-card">
+            <div class="card-top">
+                <div class="card-icon pet">🐕</div>
+                <span class="card-badge badge-soon">Coming Soon</span>
+            </div>
+            <h3>Dog Age Calculator</h3>
+            <p>Forget the old "multiply by 7" myth. Get your dog's real human age based on breed and size, backed by science.</p>
+            <div class="card-tags">
+                <span class="card-tag">By Breed</span>
+                <span class="card-tag">Science-based</span>
+            </div>
+        </div>
+        <div class="tool-card">
+            <div class="card-top">
+                <div class="card-icon pet">🦴</div>
+                <span class="card-badge badge-soon">Coming Soon</span>
+            </div>
+            <h3>Dog Food Calculator</h3>
+            <p>How much should you feed your dog daily? Enter weight, age, and activity level for a personalized feeding guide.</p>
+            <div class="card-tags">
+                <span class="card-tag">Daily Amount</span>
+                <span class="card-tag">By Weight</span>
+            </div>
+        </div>
+        <div class="tool-card">
+            <div class="card-top">
+                <div class="card-icon pet">🐾</div>
+                <span class="card-badge badge-soon">Coming Soon</span>
+            </div>
+            <h3>Pet Ownership Cost Calculator</h3>
+            <p>The real lifetime cost of owning a dog or cat — food, vet, insurance, grooming, and everything else, year by year.</p>
+            <div class="card-tags">
+                <span class="card-tag">Dog</span>
+                <span class="card-tag">Cat</span>
+                <span class="card-tag">Lifetime Cost</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section fade-in">
+    <div class="section-header">
+        <div class="section-label">Auto & Green</div>
+        <h2 class="section-title">Drive Smarter</h2>
+    </div>
+    <div class="tools-grid">
+        <div class="tool-card">
+            <div class="card-top">
+                <div class="card-icon auto">⚡</div>
+                <span class="card-badge badge-soon">Coming Soon</span>
+            </div>
+            <h3>EV vs Gas Total Cost Comparator</h3>
+            <p>Compare the 10-year total ownership cost of an electric car vs. gas — charging, insurance, maintenance, depreciation, and incentives.</p>
+            <div class="card-tags">
+                <span class="card-tag">Electric</span>
+                <span class="card-tag">Hybrid</span>
+                <span class="card-tag">TCO</span>
+            </div>
+        </div>
+        <div class="tool-card">
+            <div class="card-top">
+                <div class="card-icon auto">⛽</div>
+                <span class="card-badge badge-soon">Coming Soon</span>
+            </div>
+            <h3>Road Trip Fuel Cost Calculator</h3>
+            <p>Plan your route, pick your car, and see exactly how much gas (or charging) will cost for your next road trip.</p>
+            <div class="card-tags">
+                <span class="card-tag">Gas Cost</span>
+                <span class="card-tag">Road Trip</span>
+                <span class="card-tag">EV Charging</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section fade-in">
+    <div class="section-header">
+        <div class="section-label">Home & DIY</div>
+        <h2 class="section-title">Measure Twice, Buy Once</h2>
+    </div>
+    <div class="tools-grid">
+        <div class="tool-card">
+            <div class="card-top">
+                <div class="card-icon home">🎨</div>
+                <span class="card-badge badge-soon">Coming Soon</span>
+            </div>
+            <h3>Paint Calculator</h3>
+            <p>Enter your room dimensions and find out exactly how many cans of paint you need. Accounts for doors and windows.</p>
+            <div class="card-tags">
+                <span class="card-tag">Room Size</span>
+                <span class="card-tag">Gallons</span>
+            </div>
+        </div>
+        <div class="tool-card">
+            <div class="card-top">
+                <div class="card-icon home">🧱</div>
+                <span class="card-badge badge-soon">Coming Soon</span>
+            </div>
+            <h3>Concrete & Gravel Calculator</h3>
+            <p>Calculate exactly how much concrete, gravel, or sand you need for your project. No more guessing at the hardware store.</p>
+            <div class="card-tags">
+                <span class="card-tag">Concrete</span>
+                <span class="card-tag">Gravel</span>
+                <span class="card-tag">Sand</span>
+            </div>
+        </div>
+        <div class="tool-card">
+            <div class="card-top">
+                <div class="card-icon home">🖼️</div>
+                <span class="card-badge badge-soon">Coming Soon</span>
+            </div>
+            <h3>Wallpaper Calculator</h3>
+            <p>How many rolls do you need? Enter wall measurements and pattern repeat to get the right amount first time.</p>
+            <div class="card-tags">
+                <span class="card-tag">Rolls</span>
+                <span class="card-tag">Pattern Repeat</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section fade-in">
+    <div class="section-header">
+        <div class="section-label">Security</div>
+        <h2 class="section-title">Stay Safe Online</h2>
+    </div>
+    <div class="tools-grid">
+        <div class="tool-card">
+            <div class="card-top">
+                <div class="card-icon security">🔐</div>
+                <span class="card-badge badge-soon">Coming Soon</span>
+            </div>
+            <h3>Digital Security Score</h3>
+            <p>Check your password strength, 2FA usage, and overall online security posture — get a score and actionable tips to improve.</p>
+            <div class="card-tags">
+                <span class="card-tag">Password</span>
+                <span class="card-tag">2FA</span>
+                <span class="card-tag">Privacy</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ADSENSE_AD_HERE -->
+
+<!-- MORE FROM PRINTMONEYLAB -->
+<section class="section fade-in">
+    <div class="section-header">
+        <div class="section-label">More from PrintMoneyLab</div>
+        <h2 class="section-title">Our Projects</h2>
+    </div>
+    <div class="projects-grid">
+        <div class="project-card">
+            <h4>📈 WeatherBot</h4>
+            <p>Automated weather prediction trading bot for Polymarket</p>
+        </div>
+        <div class="project-card">
+            <h4>🔗 x402 API</h4>
+            <p>Crypto data endpoints — Kimchi Premium, Stablecoin Premium, Token Prices (Base & Solana)</p>
+        </div>
+        <div class="project-card">
+            <h4>💰 Price Challenge</h4>
+            <p>Price guessing game — App in Toss</p>
+        </div>
+        <div class="project-card">
+            <h4>⚡ SpeedTap</h4>
+            <p>Speed tapping mini-app on Telegram</p>
+        </div>
+        <div class="project-card">
+            <h4>📝 PrintMoneyLab Blog</h4>
+            <p>Documenting the journey of building automated income streams with AI</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section fade-in">
+    <div class="cta-box">
+        <h2>New Tools Every Week</h2>
+        <p>We're building practical tools that save you time, money, and headaches. Bookmark this page and check back often.</p>
+        <a href="https://printmoneylab.com" target="_blank" rel="noopener" class="cta-btn">Read Our Blog →</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-left">© 2026 PrintMoneyLab. All tools are free to use.</div>
+        <div class="footer-links">
+            <a href="/about.html">About</a>
+            <a href="/privacy.html">Privacy</a>
+            <a href="/contact.html">Contact</a>
+            <a href="https://printmoneylab.com" target="_blank" rel="noopener">Blog</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Scroll Reveal -->
+<script>
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+    faders.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
