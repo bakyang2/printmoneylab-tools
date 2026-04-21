@@ -31,7 +31,7 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "LA 2028 Olympics Schedule Timezone Viewer",
-    "description": "Interactive tool to convert LA 2028 Olympic events to your local timezone. All 772 sessions across 36 sports.",
+    "description": "Interactive tool to convert all 772 LA 2028 Olympic sessions to your local timezone. Filter by sport, date, or medal events across 36 sports.",
     "url": "https://tools.printmoneylab.com/la28-schedule-your-timezone/",
     "applicationCategory": "SportsApplication",
     "operatingSystem": "Any",
@@ -43,11 +43,23 @@
     "about": {
         "@type": "SportsEvent",
         "name": "2028 Summer Olympics",
+        "description": "The Games of the XXXIV Olympiad, held in Los Angeles, California. 36 sports, 772 sessions, July 12-30, 2028.",
         "startDate": "2028-07-14",
         "endDate": "2028-07-30",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "image": "https://tools.printmoneylab.com/la28-schedule-your-timezone/og-image.png",
+        "organizer": {
+            "@type": "Organization",
+            "name": "LA28 Olympic and Paralympic Games Organizing Committee",
+            "url": "https://la28.org"
+        },
+        "performer": {
+            "@type": "Organization",
+            "name": "International Olympic Committee (IOC)"
+        },
         "location": {
             "@type": "Place",
-            "name": "Los Angeles",
+            "name": "Los Angeles, California",
             "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Los Angeles",
@@ -56,6 +68,78 @@
             }
         }
     }
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "What time is the 100m final at the 2028 Olympics in Seoul time?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The men's 100m final session (ATH04) is on Sunday, July 16 at 3:15 PM Pacific Time. In Seoul (KST), that is Monday, July 17 at 7:15 AM. The women's 100m final session (ATH02) is on Saturday, July 15 at 5:00 PM PT, which is Sunday, July 16 at 9:00 AM KST."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "What time is the LA 2028 Opening Ceremony in London time?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The Opening Ceremony is confirmed for Friday, July 14, 2028 at SoFi Stadium and the LA Memorial Coliseum. The exact start time has not been finalized in schedule v2.1. Based on previous Olympics, expect an evening start in Pacific Time, which would be early morning Saturday July 15 in London (BST, UTC+1)."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "How many events are at the LA 2028 Olympics?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The LA 2028 Olympics has 772 competition sessions across 36 sports, running from July 12 to July 30, 2028. Of these, 223 sessions include medal events. Five sports are new or returning: baseball/softball, cricket, flag football, lacrosse, and squash."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "What time is the swimming finals at the 2028 Olympics in Tokyo time?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Swimming finals at the 2028 Stadium in Inglewood run from 6:00 PM to 8:00 PM Pacific Time (July 22-30). In Tokyo (JST), that is 10:00 AM to 12:00 PM the next day. For example, the first swimming finals session on Saturday July 22 PT starts at 10:00 AM Sunday July 23 JST."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "What events are on July 15 at the LA 2028 Olympics?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "July 15, 2028 (Day 1, Saturday) is the busiest opening day with 53 sessions. Events include: athletics (track & field heats + women's 100m final), artistic gymnastics qualifications, swimming (not yet started), basketball, baseball, cricket, surfing, triathlon, rugby sevens medal matches, fencing medal bouts, judo medal matches, and more."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Where is cricket played at the 2028 Olympics?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Olympic cricket (T20 format) is played at the Fairgrounds Cricket Stadium in Pomona, California. Women's group stage runs July 12-20, men's group stage runs July 22-29. The men's gold medal match is Saturday July 29 at 9:00 AM PT."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "What is the 24% service fee on LA 2028 tickets?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "LA28 charges a 24% service fee on all Olympic tickets, applied on top of the face value. For example, a $100 ticket costs $124 after the fee. This has been confirmed by multiple news outlets including LAist and NBC Los Angeles. Delivery and tax may add further costs."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "What time zone are LA 2028 Olympics events in?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Most LA 2028 events are in Pacific Time (PT, UTC-7 in July due to daylight saving). The exceptions are softball at OKC Softball Park and canoe slalom at OKC Whitewater Center in Oklahoma City, which are in Central Time (CT, UTC-5). That is 26 sessions total in CT."
+            }
+        }
+    ]
 }
 </script>
 
@@ -630,26 +714,79 @@ footer {
 <!-- INFO / FAQ -->
 <section class="content-section">
     <h2>About the LA 2028 Olympic Schedule</h2>
-    <p>The Los Angeles 2028 Summer Olympics run from <strong>Friday, July 14</strong> (Opening Ceremony) through <strong>Sunday, July 30, 2028</strong> (Closing Ceremony). Competition in several sports begins two days early on <strong>Wednesday, July 12</strong>, with baseball, basketball, cricket, handball, hockey, and rugby sevens kicking off the Games.</p>
-    <p>This viewer uses the official LA28 Competition Schedule version 2.1, released February 6, 2025. All 772 sessions are included, spanning 36 core sports plus five new additions: <strong>baseball/softball, cricket, flag football, lacrosse, and squash</strong>. Source times are Pacific Time (PT), except softball and canoe slalom at the Oklahoma City venue, which use Central Time (CT).</p>
+    <p>The Los Angeles 2028 Summer Olympics run from <strong>Friday, July 14</strong> (Opening Ceremony) through <strong>Sunday, July 30, 2028</strong> (Closing Ceremony). Competition in several sports begins two days early on <strong>Wednesday, July 12</strong>, with baseball, basketball, cricket, handball, hockey, rugby sevens, and water polo kicking off the Games.</p>
+    <p>This viewer uses the official LA28 Competition Schedule version 2.1, released February 6, 2025. All 772 sessions are included, spanning 36 sports plus five new or returning additions: <strong>baseball/softball, cricket (T20), flag football, lacrosse sixes, and squash</strong>. Source times are Pacific Time (PT), except softball and canoe slalom at Oklahoma City venues, which use Central Time (CT).</p>
 
     <h3>How the timezone conversion works</h3>
-    <p>Your browser's timezone is detected automatically when you open the page. You can also pick any major city from the dropdown to plan viewing times for friends, family, or for travel. Daylight Saving rules for your selected timezone are handled automatically — July 2028 falls during DST in most of the Northern Hemisphere.</p>
+    <p>Your browser's timezone is detected automatically when you open the page. You can also pick any major city from the dropdown to plan viewing times for friends, family, or for travel. Daylight Saving rules for your selected timezone are handled automatically — July 2028 falls during DST in most of the Northern Hemisphere. The conversion uses the Luxon library with the IANA Time Zone Database, the same standard used by Google Calendar and every major operating system.</p>
 
     <h3>Filtering by medal sessions</h3>
-    <p>Turning on "Medals only" shows just the sessions where a gold or bronze medal is decided — 223 sessions in total. This is the shortlist for anyone who wants to watch finals without combing through preliminary rounds. Team finals, individual finals, and medal matches are all included.</p>
+    <p>Turning on "Medals only" shows just the 223 sessions where gold or bronze medals are decided. This is the shortlist for anyone who wants to watch finals without combing through preliminary rounds.</p>
 
-    <h3>What about the Opening and Closing Ceremonies?</h3>
-    <p>Ceremony session codes and times are not yet finalized in the official schedule (as of v2.1). The Opening Ceremony is confirmed for July 14, 2028 at SoFi Stadium and the Los Angeles Memorial Coliseum (split-venue format for the first time in Olympic history). Closing Ceremony is July 30, 2028 at the LA Memorial Coliseum. This tool will be updated when official ceremony times are announced.</p>
+    <h2>Schedule Q&amp;A by Timezone</h2>
 
-    <h3>Football (Soccer) preliminary times</h3>
-    <p>Men's and women's football preliminary matches (TBD venues outside LA) do not yet have confirmed times in schedule v2.1. These will populate automatically when LA28 releases updated data. Final stages at the Rose Bowl Stadium in Pasadena are already scheduled and visible in this viewer.</p>
+    <h3>What time is the 100m final at the LA 2028 Olympics?</h3>
+    <p>The <strong>men's 100m final</strong> session (ATH04) is on <strong>Sunday, July 16 at 3:15 PM Pacific Time</strong>. In other timezones: New York 6:15 PM (same day), London 11:15 PM (same day), Paris/Berlin 12:15 AM Monday, Dubai 2:15 AM Monday, Mumbai 3:45 AM Monday, Seoul/Tokyo 7:15 AM Monday, Sydney 8:15 AM Monday. The <strong>women's 100m final</strong> session (ATH02) is <strong>Saturday, July 15 at 5:00 PM PT</strong> — in Seoul that is Sunday 9:00 AM, in London Sunday 1:00 AM.</p>
 
-    <h3>Frequently Asked Questions</h3>
-    <p><strong>Is this the official LA28 schedule?</strong> — No, this is an independent viewer built from the <a href="https://la28.org/en/competition-schedule" target="_blank" rel="noopener">publicly released LA28 Competition Schedule v2.1</a>. Always check la28.org for official ticketing and the latest updates.</p>
-    <p><strong>How accurate are the times?</strong> — Times match the official schedule exactly. Timezone conversions use the IANA Time Zone Database (the same standard used by Google Calendar and every major OS).</p>
-    <p><strong>Will the schedule change?</strong> — LA28 has stated the schedule is subject to change until the conclusion of the Games. This page will be updated whenever a new version is published.</p>
-    <p><strong>Can I save events to my calendar?</strong> — Not yet — this is the MVP release. Google Calendar and iCal export are coming in the next update, along with the ability to save favorites and share filtered views.</p>
+    <h3>What time is the Opening Ceremony in my timezone?</h3>
+    <p>The Opening Ceremony is confirmed for <strong>Friday, July 14, 2028</strong> at SoFi Stadium and the LA Memorial Coliseum (split-venue format, a first in Olympic history). The exact start time is not yet in schedule v2.1. Based on previous Olympics, expect an evening start around 5:00–8:00 PM PT. For London that would be 1:00–4:00 AM Saturday; for Seoul/Tokyo, 9:00 AM–12:00 PM Saturday; for Sydney, 10:00 AM–1:00 PM Saturday.</p>
+
+    <h3>What time are swimming finals in Seoul and Tokyo time?</h3>
+    <p>Swimming finals at the 2028 Stadium in Inglewood run <strong>6:00–8:00 PM Pacific Time</strong> on competition days (July 22–30). In Seoul and Tokyo (KST/JST, UTC+9), that is <strong>10:00 AM – 12:00 PM the next day</strong>. For example, the opening swimming finals on Saturday July 22 PT start at 10:00 AM Sunday July 23 in Seoul. The final day of swimming (July 30) has an earlier session at 3:00 PM PT = 7:00 AM Monday July 31 KST.</p>
+
+    <h3>What time is the women's gymnastics all-around final?</h3>
+    <p>The women's all-around final (GAR11) is <strong>Thursday, July 20 at 6:00 PM PT</strong>. In New York: 9:00 PM Thursday. In London: 2:00 AM Friday. In Seoul/Tokyo: 10:00 AM Friday. In Sydney: 11:00 AM Friday. In Mumbai: 6:30 AM Friday.</p>
+
+    <h3>What time is the men's basketball gold medal game?</h3>
+    <p>The men's basketball gold medal game (BKB43) at Intuit Dome in Inglewood is <strong>Sunday, July 30 at 12:45 PM PT</strong>. In New York: 3:45 PM. In London: 8:45 PM. In Seoul/Tokyo: 4:45 AM Monday. In Sydney: 5:45 AM Monday.</p>
+
+    <h3>What time is Olympic cricket in London and Mumbai time?</h3>
+    <p>Cricket (T20) is at the Fairgrounds Cricket Stadium in Pomona. Most sessions start at <strong>9:00 AM or 6:00 PM PT</strong>. For London (BST): 5:00 PM or 2:00 AM. For Mumbai (IST): 9:30 PM or 6:30 AM next day. The men's gold medal match (CKT28) is Saturday July 29, 9:00 AM PT = 5:00 PM London = 9:30 PM Mumbai.</p>
+
+    <h3>Which events are on July 15 (Day 1)?</h3>
+    <p>July 15 is the busiest opening day with <strong>53 sessions</strong> across 25+ sports. Highlights include: athletics heats plus women's 100m final (5:00 PM), artistic gymnastics men's qualifications (11:30 AM / 3:30 PM / 7:30 PM), surfing Round 1 at Trestles Beach (7:00 AM), women's triathlon final (7:30 AM), rugby sevens women's medal matches (7:00 PM), fencing medal bouts (6:30 PM), and judo medal matches (4:00 PM). All times Pacific.</p>
+
+    <h3>Which events are on July 22?</h3>
+    <p>July 22 has <strong>49 sessions</strong>. Key events: swimming finals begin (6:00 PM, first medals in the pool), men's golf final round, cycling women's road race (11:30 AM), 3x3 basketball semifinals, equestrian dressage team final, men's 10m platform diving final, water polo men's medal matches, and boxing semifinals. This is the first major swimming day and typically one of the highest-TV-rating days of any Olympics.</p>
+
+    <h3>What are the new sports at the LA 2028 Olympics?</h3>
+    <p>Five sports are new or returning: <strong>Baseball/Softball</strong> (returning after Tokyo 2020; baseball at Dodger Stadium, softball at OKC Softball Park), <strong>Cricket T20</strong> (first time since 1900; at Fairgrounds Cricket Stadium, Pomona), <strong>Flag Football</strong> (brand new; at Exposition Park Stadium), <strong>Lacrosse Sixes</strong> (returning after 1908; at Exposition Park Stadium), and <strong>Squash</strong> (brand new; at Comcast Squash Center, Universal Studios).</p>
+
+    <h3>How many medal sessions are there each day?</h3>
+    <p>There are 223 medal sessions over 17 competition days. The busiest medal days are typically mid-to-late in the Games. Day 1 (July 15) already has medal events in athletics, fencing, judo, canoe slalom, rugby sevens, shooting, triathlon, and cycling (BMX racing).</p>
+
+    <h3>What events are in Oklahoma City (Central Time)?</h3>
+    <p>26 sessions are in Oklahoma City in Central Time (CT, 2 hours ahead of PT): softball (17 sessions at OKC Softball Park, July 23–29) and canoe slalom (9 sessions at OKC Whitewater Center, July 14–22). This tool automatically handles the CT→local conversion for these events.</p>
+
+    <h3>What time is the Closing Ceremony?</h3>
+    <p>The Closing Ceremony is <strong>Sunday, July 30, 2028</strong> at the LA Memorial Coliseum. The exact start time is not yet confirmed in schedule v2.1. Competition ends that day with men's basketball gold (12:45 PM PT), women's volleyball gold (10:00 AM PT), men's marathon (7:15 AM PT), and cycling track finals (8:45 AM PT).</p>
+
+    <h3>What timezone is LA in during July?</h3>
+    <p>Los Angeles is in <strong>Pacific Daylight Time (PDT, UTC-7)</strong> during July. This is 3 hours behind New York (EDT), 8 hours behind London (BST), 16 hours behind Seoul/Tokyo (KST/JST), and 17 hours behind Sydney (AEST). The official LA28 schedule lists all times in Pacific Time using the 24-hour clock.</p>
+
+    <h3>When do basketball games start and end?</h3>
+    <p>Basketball at Intuit Dome in Inglewood runs in three daily slots during group play: 12:00 PM, 6:00 PM, and 9:30 PM PT. Knockout rounds are typically at 1:00 PM and 8:00 PM PT. The women's gold medal game is Saturday July 29 at 4:00 PM PT, men's gold is Sunday July 30 at 12:45 PM PT.</p>
+
+    <h3>What time does athletics (track and field) start each day?</h3>
+    <p>Athletics at the LA Memorial Coliseum typically has two sessions per day: morning heats starting around <strong>9:00 AM PT</strong> and evening finals starting around <strong>3:30–5:00 PM PT</strong>. The evening sessions contain most medal events. The marathon starts early at 7:15 AM PT from Venice Beach Boardwalk (women's July 29, men's July 30).</p>
+
+    <h3>Is this the official LA28 schedule?</h3>
+    <p>No. This is an independent viewer built from the <a href="https://la28.org/en/competition-schedule" target="_blank" rel="noopener noreferrer">publicly released LA28 Competition Schedule v2.1</a> (February 6, 2025). This site is not affiliated with the LA28 Organizing Committee, the International Olympic Committee (IOC), or the United States Olympic and Paralympic Committee (USOPC). For official ticketing and the latest updates, visit <a href="https://la28.org" target="_blank" rel="noopener noreferrer">la28.org</a>.</p>
+
+    <h3>How accurate are the times?</h3>
+    <p>Session start and end times match the official LA28 schedule exactly (version 2.1, February 2025). Timezone conversions use the IANA Time Zone Database via the Luxon JavaScript library — the same standard used by Google Calendar, Apple Calendar, and every major operating system. LA28 has stated the schedule is subject to change until the conclusion of the Games.</p>
+
+    <h3>Will the schedule change before the Games?</h3>
+    <p>Yes, likely. LA28 has released version 2.1 as of February 2025. Previous Olympics typically had 3-4 schedule revisions before the Games. Football (soccer) preliminary match times and venues are still TBD. This tool will be updated whenever a new version is published.</p>
+
+    <h3>Can I export events to Google Calendar?</h3>
+    <p>Not yet — this is the initial release. Google Calendar export, iCal download, event bookmarking (save favorites), and shareable filtered URLs are planned for the next update. Bookmark this page and check back.</p>
+
+    <h2>Data Sources &amp; Attribution</h2>
+    <p>Schedule data is sourced from the <strong>LA28 Olympic Games Competition Schedule by Event, Version 2.1</strong>, published by the LA28 Organizing Committee on February 6, 2025. The PDF is publicly available at <a href="https://la28.org/en/competition-schedule" target="_blank" rel="noopener noreferrer">la28.org</a>.</p>
+    <p>Timezone conversion is powered by the <a href="https://moment.github.io/luxon/" target="_blank" rel="noopener noreferrer">Luxon</a> library (v3.5.0) using the IANA Time Zone Database. Ticket fee information (24% service charge) is sourced from reporting by LAist, NBC Los Angeles, and Fox LA (2025–2026).</p>
+    <p>This tool is an independent project by <a href="https://printmoneylab.com" target="_blank" rel="noopener noreferrer">PrintMoneyLab</a>. It is not affiliated with, endorsed by, or connected to the LA28 Organizing Committee, the International Olympic Committee, NBC Sports, or any official Olympic body. Olympic-related trademarks belong to their respective owners.</p>
+    <p><em>Last updated: April 16, 2026. Schedule version: 2.1 (February 6, 2025).</em></p>
 </section>
 
 <!-- FOOTER -->

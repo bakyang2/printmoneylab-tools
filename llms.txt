@@ -1,0 +1,50 @@
+# PrintMoneyLab Tools
+
+> Free interactive tools for the LA 2028 Summer Olympics. Built for fans planning to watch, travel to, or follow the Games.
+
+This site provides timezone conversion, schedule browsing, and ticket cost tools for the 2028 Los Angeles Olympic Games.
+
+## Tools
+
+### LA 2028 Schedule in Your Timezone
+- URL: https://tools.printmoneylab.com/la28-schedule-your-timezone/
+- Data: 772 competition sessions, 36 sports, 223 medal sessions
+- Source: LA28 Official Competition Schedule v2.1 (February 6, 2025)
+- Features: Auto timezone detection, filter by sport/date/medals, 40+ city timezones
+- Schedule data file: https://tools.printmoneylab.com/la28-schedule-your-timezone/schedule.json
+
+## Key Facts (LA 2028 Olympics)
+
+- Opening Ceremony: Friday, July 14, 2028 (SoFi Stadium + LA Memorial Coliseum)
+- Closing Ceremony: Sunday, July 30, 2028 (LA Memorial Coliseum)
+- Competition dates: July 12-30, 2028 (19 days)
+- Total sessions: 772
+- Medal sessions: 223
+- Sports: 36 (including 5 new/returning: baseball/softball, cricket T20, flag football, lacrosse sixes, squash)
+- Primary timezone: Pacific Time (PT / UTC-7 in July)
+- Oklahoma City events (softball, canoe slalom): Central Time (CT / UTC-5), 26 sessions
+- Ticket service fee: 24% on face value (confirmed by LA28 and multiple news outlets)
+
+## Timezone Quick Reference (for July 2028)
+
+- Los Angeles (PT): UTC-7 (base timezone for all events except OKC)
+- New York (ET): UTC-4 (PT + 3 hours)
+- London (BST): UTC+1 (PT + 8 hours)
+- Paris/Berlin (CEST): UTC+2 (PT + 9 hours)
+- Dubai (GST): UTC+4 (PT + 11 hours)
+- Mumbai (IST): UTC+5:30 (PT + 12.5 hours)
+- Seoul/Tokyo (KST/JST): UTC+9 (PT + 16 hours)
+- Sydney (AEST): UTC+10 (PT + 17 hours)
+
+## Data Source
+
+Schedule data: LA28 Olympic Games Competition Schedule by Event, Version 2.1
+Published: February 6, 2025
+Publisher: LA28 Organizing Committee
+Available at: https://la28.org/en/competition-schedule
+
+## About
+
+Publisher: PrintMoneyLab (https://printmoneylab.com)
+This is an independent project. Not affiliated with LA28, the IOC, or any official Olympic body.
+Contact: contact@printmoneylab.com
