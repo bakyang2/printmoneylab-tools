@@ -579,6 +579,119 @@ nav {
     margin-bottom: 6px;
 }
 
+/* DETAILS / ACCORDION (Q&A) */
+.content-section details {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    transition: background 0.2s;
+}
+.content-section details[open] {
+    background: var(--bg-card-hover);
+    border-color: var(--border-strong);
+}
+.content-section details summary {
+    padding: 14px 18px;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    user-select: none;
+}
+.content-section details summary::-webkit-details-marker { display: none; }
+.content-section details summary::after {
+    content: '+';
+    font-size: 1.4rem;
+    color: var(--accent);
+    font-weight: 300;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+}
+.content-section details[open] summary::after {
+    content: '−';
+}
+.content-section details summary:hover {
+    color: var(--accent);
+}
+.content-section details > *:not(summary) {
+    padding: 0 18px 16px;
+}
+.content-section details p {
+    margin-bottom: 10px;
+    font-size: 0.92rem;
+}
+
+/* QUICK NAV JUMP LINKS */
+.quick-nav {
+    max-width: 680px;
+    margin: 20px auto 0;
+    padding: 12px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 0.82rem;
+    position: relative;
+    z-index: 1;
+}
+.quick-nav-label {
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-right: 4px;
+}
+.quick-nav a {
+    color: var(--text-secondary);
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: all 0.15s;
+    font-weight: 500;
+}
+.quick-nav a:hover {
+    background: rgba(212, 168, 67, 0.1);
+    color: var(--accent);
+}
+
+/* BACK TO TOP */
+.back-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 1px solid var(--border-strong);
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 80;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.back-to-top.visible {
+    display: flex;
+}
+.back-to-top:hover {
+    background: var(--accent);
+    color: #0f1117;
+    transform: translateY(-2px);
+}
+
 /* FOOTER */
 footer {
     border-top: 1px solid var(--border);
@@ -670,6 +783,13 @@ footer {
             <div class="label">Medal Sessions</div>
         </div>
     </div>
+
+    <nav class="quick-nav" aria-label="Page sections">
+        <span class="quick-nav-label">Jump to:</span>
+        <a href="#schedule">📅 Schedule</a>
+        <a href="#faq">❓ Q&amp;A</a>
+        <a href="#sources">📍 Sources</a>
+    </nav>
 </section>
 
 <!-- FILTERS -->
@@ -712,7 +832,7 @@ footer {
 </div>
 
 <!-- INFO / FAQ -->
-<section class="content-section">
+<section class="content-section" id="about">
     <h2>About the LA 2028 Olympic Schedule</h2>
     <p>The Los Angeles 2028 Summer Olympics run from <strong>Friday, July 14</strong> (Opening Ceremony) through <strong>Sunday, July 30, 2028</strong> (Closing Ceremony). Competition in several sports begins two days early on <strong>Wednesday, July 12</strong>, with baseball, basketball, cricket, handball, hockey, rugby sevens, and water polo kicking off the Games.</p>
     <p>This viewer uses the official LA28 Competition Schedule version 2.1, released February 6, 2025. All 772 sessions are included, spanning 36 sports plus five new or returning additions: <strong>baseball/softball, cricket (T20), flag football, lacrosse sixes, and squash</strong>. Source times are Pacific Time (PT), except softball and canoe slalom at Oklahoma City venues, which use Central Time (CT).</p>
@@ -722,72 +842,117 @@ footer {
 
     <h3>Filtering by medal sessions</h3>
     <p>Turning on "Medals only" shows just the 223 sessions where gold or bronze medals are decided. This is the shortlist for anyone who wants to watch finals without combing through preliminary rounds.</p>
+</section>
 
+<section class="content-section" id="faq">
     <h2>Schedule Q&amp;A by Timezone</h2>
+    <p>Quick answers for common questions. Click any question to expand.</p>
 
-    <h3>What time is the 100m final at the LA 2028 Olympics?</h3>
-    <p>The <strong>men's 100m final</strong> session (ATH04) is on <strong>Sunday, July 16 at 3:15 PM Pacific Time</strong>. In other timezones: New York 6:15 PM (same day), London 11:15 PM (same day), Paris/Berlin 12:15 AM Monday, Dubai 2:15 AM Monday, Mumbai 3:45 AM Monday, Seoul/Tokyo 7:15 AM Monday, Sydney 8:15 AM Monday. The <strong>women's 100m final</strong> session (ATH02) is <strong>Saturday, July 15 at 5:00 PM PT</strong> — in Seoul that is Sunday 9:00 AM, in London Sunday 1:00 AM.</p>
+    <details>
+        <summary>What time is the 100m final at the LA 2028 Olympics?</summary>
+        <p>The <strong>men's 100m final</strong> session (ATH04) is on <strong>Sunday, July 16 at 3:15 PM Pacific Time</strong>. In other timezones: New York 6:15 PM (same day), London 11:15 PM (same day), Paris/Berlin 12:15 AM Monday, Dubai 2:15 AM Monday, Mumbai 3:45 AM Monday, Seoul/Tokyo 7:15 AM Monday, Sydney 8:15 AM Monday. The <strong>women's 100m final</strong> session (ATH02) is <strong>Saturday, July 15 at 5:00 PM PT</strong> — in Seoul that is Sunday 9:00 AM, in London Sunday 1:00 AM.</p>
+    </details>
 
-    <h3>What time is the Opening Ceremony in my timezone?</h3>
-    <p>The Opening Ceremony is confirmed for <strong>Friday, July 14, 2028</strong> at SoFi Stadium and the LA Memorial Coliseum (split-venue format, a first in Olympic history). The exact start time is not yet in schedule v2.1. Based on previous Olympics, expect an evening start around 5:00–8:00 PM PT. For London that would be 1:00–4:00 AM Saturday; for Seoul/Tokyo, 9:00 AM–12:00 PM Saturday; for Sydney, 10:00 AM–1:00 PM Saturday.</p>
+    <details>
+        <summary>What time is the Opening Ceremony in my timezone?</summary>
+        <p>The Opening Ceremony is confirmed for <strong>Friday, July 14, 2028</strong> at SoFi Stadium and the LA Memorial Coliseum (split-venue format, a first in Olympic history). The exact start time is not yet in schedule v2.1. Based on previous Olympics, expect an evening start around 5:00–8:00 PM PT. For London that would be 1:00–4:00 AM Saturday; for Seoul/Tokyo, 9:00 AM–12:00 PM Saturday; for Sydney, 10:00 AM–1:00 PM Saturday.</p>
+    </details>
 
-    <h3>What time are swimming finals in Seoul and Tokyo time?</h3>
-    <p>Swimming finals at the 2028 Stadium in Inglewood run <strong>6:00–8:00 PM Pacific Time</strong> on competition days (July 22–30). In Seoul and Tokyo (KST/JST, UTC+9), that is <strong>10:00 AM – 12:00 PM the next day</strong>. For example, the opening swimming finals on Saturday July 22 PT start at 10:00 AM Sunday July 23 in Seoul. The final day of swimming (July 30) has an earlier session at 3:00 PM PT = 7:00 AM Monday July 31 KST.</p>
+    <details>
+        <summary>What time are swimming finals in Seoul and Tokyo time?</summary>
+        <p>Swimming finals at the 2028 Stadium in Inglewood run <strong>6:00–8:00 PM Pacific Time</strong> on competition days (July 22–30). In Seoul and Tokyo (KST/JST, UTC+9), that is <strong>10:00 AM – 12:00 PM the next day</strong>. For example, the opening swimming finals on Saturday July 22 PT start at 10:00 AM Sunday July 23 in Seoul. The final day of swimming (July 30) has an earlier session at 3:00 PM PT = 7:00 AM Monday July 31 KST.</p>
+    </details>
 
-    <h3>What time is the women's gymnastics all-around final?</h3>
-    <p>The women's all-around final (GAR11) is <strong>Thursday, July 20 at 6:00 PM PT</strong>. In New York: 9:00 PM Thursday. In London: 2:00 AM Friday. In Seoul/Tokyo: 10:00 AM Friday. In Sydney: 11:00 AM Friday. In Mumbai: 6:30 AM Friday.</p>
+    <details>
+        <summary>What time is the women's gymnastics all-around final?</summary>
+        <p>The women's all-around final (GAR11) is <strong>Thursday, July 20 at 6:00 PM PT</strong>. In New York: 9:00 PM Thursday. In London: 2:00 AM Friday. In Seoul/Tokyo: 10:00 AM Friday. In Sydney: 11:00 AM Friday. In Mumbai: 6:30 AM Friday.</p>
+    </details>
 
-    <h3>What time is the men's basketball gold medal game?</h3>
-    <p>The men's basketball gold medal game (BKB43) at Intuit Dome in Inglewood is <strong>Sunday, July 30 at 12:45 PM PT</strong>. In New York: 3:45 PM. In London: 8:45 PM. In Seoul/Tokyo: 4:45 AM Monday. In Sydney: 5:45 AM Monday.</p>
+    <details>
+        <summary>What time is the men's basketball gold medal game?</summary>
+        <p>The men's basketball gold medal game (BKB43) at Intuit Dome in Inglewood is <strong>Sunday, July 30 at 12:45 PM PT</strong>. In New York: 3:45 PM. In London: 8:45 PM. In Seoul/Tokyo: 4:45 AM Monday. In Sydney: 5:45 AM Monday.</p>
+    </details>
 
-    <h3>What time is Olympic cricket in London and Mumbai time?</h3>
-    <p>Cricket (T20) is at the Fairgrounds Cricket Stadium in Pomona. Most sessions start at <strong>9:00 AM or 6:00 PM PT</strong>. For London (BST): 5:00 PM or 2:00 AM. For Mumbai (IST): 9:30 PM or 6:30 AM next day. The men's gold medal match (CKT28) is Saturday July 29, 9:00 AM PT = 5:00 PM London = 9:30 PM Mumbai.</p>
+    <details>
+        <summary>What time is Olympic cricket in London and Mumbai time?</summary>
+        <p>Cricket (T20) is at the Fairgrounds Cricket Stadium in Pomona. Most sessions start at <strong>9:00 AM or 6:00 PM PT</strong>. For London (BST): 5:00 PM or 2:00 AM. For Mumbai (IST): 9:30 PM or 6:30 AM next day. The men's gold medal match (CKT28) is Saturday July 29, 9:00 AM PT = 5:00 PM London = 9:30 PM Mumbai.</p>
+    </details>
 
-    <h3>Which events are on July 15 (Day 1)?</h3>
-    <p>July 15 is the busiest opening day with <strong>53 sessions</strong> across 25+ sports. Highlights include: athletics heats plus women's 100m final (5:00 PM), artistic gymnastics men's qualifications (11:30 AM / 3:30 PM / 7:30 PM), surfing Round 1 at Trestles Beach (7:00 AM), women's triathlon final (7:30 AM), rugby sevens women's medal matches (7:00 PM), fencing medal bouts (6:30 PM), and judo medal matches (4:00 PM). All times Pacific.</p>
+    <details>
+        <summary>Which events are on July 15 (Day 1)?</summary>
+        <p>July 15 is the busiest opening day with <strong>53 sessions</strong> across 25+ sports. Highlights include: athletics heats plus women's 100m final (5:00 PM), artistic gymnastics men's qualifications (11:30 AM / 3:30 PM / 7:30 PM), surfing Round 1 at Trestles Beach (7:00 AM), women's triathlon final (7:30 AM), rugby sevens women's medal matches (7:00 PM), fencing medal bouts (6:30 PM), and judo medal matches (4:00 PM). All times Pacific.</p>
+    </details>
 
-    <h3>Which events are on July 22?</h3>
-    <p>July 22 has <strong>49 sessions</strong>. Key events: swimming finals begin (6:00 PM, first medals in the pool), men's golf final round, cycling women's road race (11:30 AM), 3x3 basketball semifinals, equestrian dressage team final, men's 10m platform diving final, water polo men's medal matches, and boxing semifinals. This is the first major swimming day and typically one of the highest-TV-rating days of any Olympics.</p>
+    <details>
+        <summary>Which events are on July 22?</summary>
+        <p>July 22 has <strong>49 sessions</strong>. Key events: swimming finals begin (6:00 PM, first medals in the pool), men's golf final round, cycling women's road race (11:30 AM), 3x3 basketball semifinals, equestrian dressage team final, men's 10m platform diving final, water polo men's medal matches, and boxing semifinals. This is the first major swimming day and typically one of the highest-TV-rating days of any Olympics.</p>
+    </details>
 
-    <h3>What are the new sports at the LA 2028 Olympics?</h3>
-    <p>Five sports are new or returning: <strong>Baseball/Softball</strong> (returning after Tokyo 2020; baseball at Dodger Stadium, softball at OKC Softball Park), <strong>Cricket T20</strong> (first time since 1900; at Fairgrounds Cricket Stadium, Pomona), <strong>Flag Football</strong> (brand new; at Exposition Park Stadium), <strong>Lacrosse Sixes</strong> (returning after 1908; at Exposition Park Stadium), and <strong>Squash</strong> (brand new; at Comcast Squash Center, Universal Studios).</p>
+    <details>
+        <summary>What are the new sports at the LA 2028 Olympics?</summary>
+        <p>Five sports are new or returning: <strong>Baseball/Softball</strong> (returning after Tokyo 2020; baseball at Dodger Stadium, softball at OKC Softball Park), <strong>Cricket T20</strong> (first time since 1900; at Fairgrounds Cricket Stadium, Pomona), <strong>Flag Football</strong> (brand new; at Exposition Park Stadium), <strong>Lacrosse Sixes</strong> (returning after 1908; at Exposition Park Stadium), and <strong>Squash</strong> (brand new; at Comcast Squash Center, Universal Studios).</p>
+    </details>
 
-    <h3>How many medal sessions are there each day?</h3>
-    <p>There are 223 medal sessions over 17 competition days. The busiest medal days are typically mid-to-late in the Games. Day 1 (July 15) already has medal events in athletics, fencing, judo, canoe slalom, rugby sevens, shooting, triathlon, and cycling (BMX racing).</p>
+    <details>
+        <summary>How many medal sessions are there each day?</summary>
+        <p>There are 223 medal sessions over 17 competition days. The busiest medal days are typically mid-to-late in the Games. Day 1 (July 15) already has medal events in athletics, fencing, judo, canoe slalom, rugby sevens, shooting, triathlon, and cycling (BMX racing).</p>
+    </details>
 
-    <h3>What events are in Oklahoma City (Central Time)?</h3>
-    <p>26 sessions are in Oklahoma City in Central Time (CT, 2 hours ahead of PT): softball (17 sessions at OKC Softball Park, July 23–29) and canoe slalom (9 sessions at OKC Whitewater Center, July 14–22). This tool automatically handles the CT→local conversion for these events.</p>
+    <details>
+        <summary>What events are in Oklahoma City (Central Time)?</summary>
+        <p>26 sessions are in Oklahoma City in Central Time (CT, 2 hours ahead of PT): softball (17 sessions at OKC Softball Park, July 23–29) and canoe slalom (9 sessions at OKC Whitewater Center, July 14–22). This tool automatically handles the CT→local conversion for these events.</p>
+    </details>
 
-    <h3>What time is the Closing Ceremony?</h3>
-    <p>The Closing Ceremony is <strong>Sunday, July 30, 2028</strong> at the LA Memorial Coliseum. The exact start time is not yet confirmed in schedule v2.1. Competition ends that day with men's basketball gold (12:45 PM PT), women's volleyball gold (10:00 AM PT), men's marathon (7:15 AM PT), and cycling track finals (8:45 AM PT).</p>
+    <details>
+        <summary>What time is the Closing Ceremony?</summary>
+        <p>The Closing Ceremony is <strong>Sunday, July 30, 2028</strong> at the LA Memorial Coliseum. The exact start time is not yet confirmed in schedule v2.1. Competition ends that day with men's basketball gold (12:45 PM PT), women's volleyball gold (10:00 AM PT), men's marathon (7:15 AM PT), and cycling track finals (8:45 AM PT).</p>
+    </details>
 
-    <h3>What timezone is LA in during July?</h3>
-    <p>Los Angeles is in <strong>Pacific Daylight Time (PDT, UTC-7)</strong> during July. This is 3 hours behind New York (EDT), 8 hours behind London (BST), 16 hours behind Seoul/Tokyo (KST/JST), and 17 hours behind Sydney (AEST). The official LA28 schedule lists all times in Pacific Time using the 24-hour clock.</p>
+    <details>
+        <summary>What timezone is LA in during July?</summary>
+        <p>Los Angeles is in <strong>Pacific Daylight Time (PDT, UTC-7)</strong> during July. This is 3 hours behind New York (EDT), 8 hours behind London (BST), 16 hours behind Seoul/Tokyo (KST/JST), and 17 hours behind Sydney (AEST). The official LA28 schedule lists all times in Pacific Time using the 24-hour clock.</p>
+    </details>
 
-    <h3>When do basketball games start and end?</h3>
-    <p>Basketball at Intuit Dome in Inglewood runs in three daily slots during group play: 12:00 PM, 6:00 PM, and 9:30 PM PT. Knockout rounds are typically at 1:00 PM and 8:00 PM PT. The women's gold medal game is Saturday July 29 at 4:00 PM PT, men's gold is Sunday July 30 at 12:45 PM PT.</p>
+    <details>
+        <summary>When do basketball games start and end?</summary>
+        <p>Basketball at Intuit Dome in Inglewood runs in three daily slots during group play: 12:00 PM, 6:00 PM, and 9:30 PM PT. Knockout rounds are typically at 1:00 PM and 8:00 PM PT. The women's gold medal game is Saturday July 29 at 4:00 PM PT, men's gold is Sunday July 30 at 12:45 PM PT.</p>
+    </details>
 
-    <h3>What time does athletics (track and field) start each day?</h3>
-    <p>Athletics at the LA Memorial Coliseum typically has two sessions per day: morning heats starting around <strong>9:00 AM PT</strong> and evening finals starting around <strong>3:30–5:00 PM PT</strong>. The evening sessions contain most medal events. The marathon starts early at 7:15 AM PT from Venice Beach Boardwalk (women's July 29, men's July 30).</p>
+    <details>
+        <summary>What time does athletics (track and field) start each day?</summary>
+        <p>Athletics at the LA Memorial Coliseum typically has two sessions per day: morning heats starting around <strong>9:00 AM PT</strong> and evening finals starting around <strong>3:30–5:00 PM PT</strong>. The evening sessions contain most medal events. The marathon starts early at 7:15 AM PT from Venice Beach Boardwalk (women's July 29, men's July 30).</p>
+    </details>
 
-    <h3>Is this the official LA28 schedule?</h3>
-    <p>No. This is an independent viewer built from the <a href="https://la28.org/en/competition-schedule" target="_blank" rel="noopener noreferrer">publicly released LA28 Competition Schedule v2.1</a> (February 6, 2025). This site is not affiliated with the LA28 Organizing Committee, the International Olympic Committee (IOC), or the United States Olympic and Paralympic Committee (USOPC). For official ticketing and the latest updates, visit <a href="https://la28.org" target="_blank" rel="noopener noreferrer">la28.org</a>.</p>
+    <details>
+        <summary>Is this the official LA28 schedule?</summary>
+        <p>No. This is an independent viewer built from the <a href="https://la28.org/en/competition-schedule" target="_blank" rel="noopener noreferrer">publicly released LA28 Competition Schedule v2.1</a> (February 6, 2025). This site is not affiliated with the LA28 Organizing Committee, the International Olympic Committee (IOC), or the United States Olympic and Paralympic Committee (USOPC). For official ticketing and the latest updates, visit <a href="https://la28.org" target="_blank" rel="noopener noreferrer">la28.org</a>.</p>
+    </details>
 
-    <h3>How accurate are the times?</h3>
-    <p>Session start and end times match the official LA28 schedule exactly (version 2.1, February 2025). Timezone conversions use the IANA Time Zone Database via the Luxon JavaScript library — the same standard used by Google Calendar, Apple Calendar, and every major operating system. LA28 has stated the schedule is subject to change until the conclusion of the Games.</p>
+    <details>
+        <summary>How accurate are the times?</summary>
+        <p>Session start and end times match the official LA28 schedule exactly (version 2.1, February 2025). Timezone conversions use the IANA Time Zone Database via the Luxon JavaScript library — the same standard used by Google Calendar, Apple Calendar, and every major operating system. LA28 has stated the schedule is subject to change until the conclusion of the Games.</p>
+    </details>
 
-    <h3>Will the schedule change before the Games?</h3>
-    <p>Yes, likely. LA28 has released version 2.1 as of February 2025. Previous Olympics typically had 3-4 schedule revisions before the Games. Football (soccer) preliminary match times and venues are still TBD. This tool will be updated whenever a new version is published.</p>
+    <details>
+        <summary>Will the schedule change before the Games?</summary>
+        <p>Yes, likely. LA28 has released version 2.1 as of February 2025. Previous Olympics typically had 3-4 schedule revisions before the Games. Football (soccer) preliminary match times and venues are still TBD. This tool will be updated whenever a new version is published.</p>
+    </details>
 
-    <h3>Can I export events to Google Calendar?</h3>
-    <p>Not yet — this is the initial release. Google Calendar export, iCal download, event bookmarking (save favorites), and shareable filtered URLs are planned for the next update. Bookmark this page and check back.</p>
+    <details>
+        <summary>Can I export events to Google Calendar?</summary>
+        <p>Not yet — this is the initial release. Google Calendar export, iCal download, event bookmarking (save favorites), and shareable filtered URLs are planned for the next update. Bookmark this page and check back.</p>
+    </details>
+</section>
 
+<section class="content-section" id="sources">
     <h2>Data Sources &amp; Attribution</h2>
     <p>Schedule data is sourced from the <strong>LA28 Olympic Games Competition Schedule by Event, Version 2.1</strong>, published by the LA28 Organizing Committee on February 6, 2025. The PDF is publicly available at <a href="https://la28.org/en/competition-schedule" target="_blank" rel="noopener noreferrer">la28.org</a>.</p>
     <p>Timezone conversion is powered by the <a href="https://moment.github.io/luxon/" target="_blank" rel="noopener noreferrer">Luxon</a> library (v3.5.0) using the IANA Time Zone Database. Ticket fee information (24% service charge) is sourced from reporting by LAist, NBC Los Angeles, and Fox LA (2025–2026).</p>
     <p>This tool is an independent project by <a href="https://printmoneylab.com" target="_blank" rel="noopener noreferrer">PrintMoneyLab</a>. It is not affiliated with, endorsed by, or connected to the LA28 Organizing Committee, the International Olympic Committee, NBC Sports, or any official Olympic body. Olympic-related trademarks belong to their respective owners.</p>
     <p><em>Last updated: April 16, 2026. Schedule version: 2.1 (February 6, 2025).</em></p>
 </section>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">↑</button>
 
 <!-- FOOTER -->
 <footer>
@@ -1114,6 +1279,32 @@ async function init() {
 }
 
 init();
+
+// Back to top button
+const backToTopBtn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 600) {
+        backToTopBtn.classList.add('visible');
+    } else {
+        backToTopBtn.classList.remove('visible');
+    }
+});
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Smooth scroll for quick-nav jump links (offset for sticky filter bar)
+document.querySelectorAll('.quick-nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+            const offset = 80;
+            const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+    });
+});
 </script>
 
 </body>
