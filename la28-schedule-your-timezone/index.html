@@ -14,7 +14,14 @@
 <meta property="og:url" content="https://tools.printmoneylab.com/la28-schedule-your-timezone/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PrintMoneyLab Tools">
+<meta property="og:image" content="https://tools.printmoneylab.com/la28-schedule-your-timezone/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="LA 2028 Olympics in Your Timezone - 772 sessions, 36 sports, 19 days, 223 medals">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LA 2028 Olympics Schedule in Your Timezone">
+<meta name="twitter:description" content="Every LA 2028 Olympic event in your local time. All 772 sessions, 36 sports, auto-detected timezone.">
+<meta name="twitter:image" content="https://tools.printmoneylab.com/la28-schedule-your-timezone/og-image.png">
 <meta name="robots" content="index, follow">
 
 <!-- Fonts -->
@@ -159,6 +166,19 @@
     --medal-glow: rgba(244, 197, 66, 0.2);
     --border: rgba(255,255,255,0.06);
     --border-strong: rgba(255,255,255,0.12);
+
+    /* Olympic ring colors */
+    --ring-blue: #0085c7;
+    --ring-yellow: #f4c300;
+    --ring-black: #1a1a1a;
+    --ring-green: #009f3d;
+    --ring-red: #df0024;
+
+    /* LA palette */
+    --la-sunset: #ff6b35;
+    --la-ocean: #00a7c6;
+    --la-palm: #2d8f47;
+
     --radius: 12px;
     --radius-sm: 8px;
     --radius-lg: 20px;
@@ -214,26 +234,56 @@ nav {
     text-align: center;
     position: relative;
     overflow: hidden;
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
 }
+
+/* Multi-color radial glow (subtle Olympic ring reflection) */
 .hero::before {
     content: '';
     position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
-    width: 900px; height: 500px;
-    background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 60%);
+    width: 1200px; height: 600px;
+    background:
+        radial-gradient(ellipse 400px 300px at 30% 40%, rgba(0, 133, 199, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 350px 250px at 70% 50%, rgba(244, 195, 0, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 500px 350px at 50% 30%, var(--accent-glow) 0%, transparent 65%);
     pointer-events: none;
+    z-index: 0;
 }
+
+/* Olympic rings decoration (top) */
+.hero-rings {
+    position: absolute;
+    top: 24px; left: 50%; transform: translateX(-50%);
+    width: 120px; height: 56px;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+/* LA skyline silhouette (bottom) */
+.hero-skyline {
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    width: 100%;
+    height: 80px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.25;
+}
+
 .hero-badge {
     display: inline-flex; align-items: center; gap: 6px;
     padding: 5px 14px;
     background: var(--bg-card);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-strong);
     border-radius: 100px;
     font-size: 0.75rem; color: var(--accent);
     font-weight: 600;
     margin-bottom: 18px;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    position: relative; z-index: 1;
+    position: relative; z-index: 2;
+    backdrop-filter: blur(8px);
 }
 .hero-badge .pulse {
     width: 6px; height: 6px; border-radius: 50%;
@@ -248,22 +298,34 @@ nav {
 }
 .hero h1 {
     font-family: 'Outfit', sans-serif;
-    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 12px;
-    position: relative; z-index: 1;
+    font-size: clamp(1.9rem, 4.8vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 14px;
+    position: relative; z-index: 2;
+    letter-spacing: -0.02em;
 }
 .hero h1 .highlight {
-    background: linear-gradient(135deg, var(--accent), #e6bc5a);
+    background: linear-gradient(90deg,
+        var(--ring-blue) 0%,
+        var(--ring-yellow) 25%,
+        var(--accent) 50%,
+        var(--ring-green) 75%,
+        var(--ring-red) 100%);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: gradientShift 8s ease infinite;
+}
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
 }
 .hero-subtitle {
     font-size: 1rem; color: var(--text-secondary);
     max-width: 580px; margin: 0 auto 28px;
-    position: relative; z-index: 1;
+    position: relative; z-index: 2;
 }
 
 /* TIMEZONE PICKER */
@@ -274,7 +336,9 @@ nav {
     background: var(--bg-card);
     border: 1px solid var(--border-strong);
     border-radius: var(--radius);
-    position: relative; z-index: 1;
+    position: relative; z-index: 2;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(212, 168, 67, 0.05);
 }
 .tz-picker-label {
     font-size: 0.75rem; color: var(--text-muted);
@@ -297,25 +361,41 @@ nav {
     font-size: 1rem;
     font-family: inherit;
     cursor: pointer;
+    transition: border-color 0.2s;
+}
+.tz-select:hover {
+    border-color: var(--border-strong);
 }
 .tz-select:focus {
     outline: none;
     border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
 }
 
 /* STATS */
 .hero-stats {
     display: flex; justify-content: center; gap: 40px;
-    position: relative; z-index: 1;
+    position: relative; z-index: 2;
+    flex-wrap: wrap;
 }
 .hero-stat { text-align: center; }
 .hero-stat .num {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.5rem; font-weight: 700; color: var(--accent);
+    font-size: 1.6rem; font-weight: 800;
+    line-height: 1;
+    transition: transform 0.3s;
+}
+.hero-stat:nth-child(1) .num { color: var(--ring-blue); }
+.hero-stat:nth-child(2) .num { color: var(--accent); }
+.hero-stat:nth-child(3) .num { color: var(--ring-green); }
+.hero-stat:nth-child(4) .num { color: var(--medal-gold); }
+.hero-stat:hover .num {
+    transform: scale(1.1);
 }
 .hero-stat .label {
     font-size: 0.72rem; color: var(--text-muted);
     text-transform: uppercase; letter-spacing: 1px;
+    margin-top: 4px;
 }
 
 /* CONTAINER */
@@ -435,13 +515,23 @@ nav {
     background: var(--bg-card-hover);
 }
 .session-card.is-medal {
-    background: linear-gradient(135deg, rgba(244,197,66,0.06) 0%, var(--bg-card) 70%);
-    border-color: rgba(244,197,66,0.2);
+    background: linear-gradient(135deg, rgba(244,197,66,0.08) 0%, var(--bg-card) 70%);
+    border-color: rgba(244,197,66,0.3);
+}
+.session-card.is-medal:hover {
+    border-color: rgba(244,197,66,0.5);
+    box-shadow: 0 4px 20px rgba(244, 197, 66, 0.15);
 }
 .session-card.is-medal::before {
     content: '🥇';
     position: absolute; top: 12px; right: 12px;
     font-size: 1.1rem;
+    filter: drop-shadow(0 0 4px rgba(244, 197, 66, 0.5));
+    animation: medalShine 3s ease-in-out infinite;
+}
+@keyframes medalShine {
+    0%, 100% { filter: drop-shadow(0 0 4px rgba(244, 197, 66, 0.5)); }
+    50% { filter: drop-shadow(0 0 10px rgba(244, 197, 66, 0.8)); }
 }
 .session-head {
     display: flex; align-items: center; gap: 10px;
@@ -748,6 +838,20 @@ footer {
 
 <!-- HERO -->
 <section class="hero">
+    <!-- Olympic Rings (inspired tribute, 5-circle abstract design) -->
+    <svg class="hero-rings" viewBox="0 0 120 56" aria-hidden="true">
+        <circle cx="20" cy="20" r="13" fill="none" stroke="var(--ring-blue)" stroke-width="3"/>
+        <circle cx="44" cy="20" r="13" fill="none" stroke="var(--ring-yellow)" stroke-width="3"/>
+        <circle cx="68" cy="20" r="13" fill="none" stroke="var(--text-primary)" stroke-width="3"/>
+        <circle cx="92" cy="20" r="13" fill="none" stroke="var(--ring-green)" stroke-width="3"/>
+        <circle cx="116" cy="20" r="13" fill="none" stroke="var(--ring-red)" stroke-width="3"/>
+    </svg>
+
+    <!-- LA skyline silhouette at bottom -->
+    <svg class="hero-skyline" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+        <path fill="var(--accent)" d="M0,80 L0,55 L40,55 L45,40 L50,55 L90,55 L90,35 L115,35 L115,50 L150,50 L155,30 L165,30 L165,50 L200,50 L200,25 L210,25 L215,15 L220,25 L230,25 L230,50 L260,50 L260,40 L290,40 L290,55 L320,55 L320,20 L325,20 L330,10 L335,20 L340,20 L340,55 L380,55 L380,45 L420,45 L420,55 L460,55 L460,30 L465,30 L470,18 L475,30 L480,30 L480,55 L520,55 L520,40 L555,40 L555,55 L595,55 L595,35 L625,35 L625,55 L665,55 L665,28 L675,28 L680,15 L685,28 L695,28 L695,55 L735,55 L735,45 L775,45 L775,55 L815,55 L815,32 L850,32 L850,55 L890,55 L890,20 L895,20 L900,8 L905,20 L910,20 L910,55 L950,55 L950,40 L985,40 L985,55 L1025,55 L1025,30 L1055,30 L1055,55 L1095,55 L1095,25 L1100,25 L1105,12 L1110,25 L1120,25 L1120,55 L1160,55 L1160,45 L1200,45 L1200,55 L1240,55 L1240,35 L1275,35 L1275,55 L1315,55 L1315,22 L1320,22 L1325,10 L1330,22 L1340,22 L1340,55 L1380,55 L1380,50 L1440,50 L1440,80 Z"/>
+    </svg>
+
     <div class="hero-badge">
         <span class="pulse"></span>
         LIVE · Official LA28 Schedule v2.1
@@ -1242,19 +1346,35 @@ function renderSession(s) {
 }
 
 // INIT
+function animateCounter(el, target, duration = 1500) {
+    const start = 0;
+    const startTime = performance.now();
+    function update(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // easeOutCubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(start + (target - start) * eased);
+        el.textContent = current.toLocaleString();
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = target.toLocaleString();
+    }
+    requestAnimationFrame(update);
+}
+
 async function init() {
     try {
         const res = await fetch('schedule.json');
         SCHEDULE = await res.json();
 
-        // Update stats
+        // Update stats with counter animation
         const uniqueSports = new Set(SCHEDULE.sessions.map(s => s.sport)).size;
         const uniqueDays = new Set(SCHEDULE.sessions.map(s => s.date)).size;
         const medalCount = SCHEDULE.sessions.filter(s => s.is_medal).length;
-        document.getElementById('statSessions').textContent = SCHEDULE.sessions.length;
-        document.getElementById('statSports').textContent = uniqueSports;
-        document.getElementById('statDays').textContent = uniqueDays;
-        document.getElementById('statMedals').textContent = medalCount;
+        animateCounter(document.getElementById('statSessions'), SCHEDULE.sessions.length);
+        animateCounter(document.getElementById('statSports'), uniqueSports);
+        animateCounter(document.getElementById('statDays'), uniqueDays);
+        animateCounter(document.getElementById('statMedals'), medalCount);
 
         // Detect + setup timezone
         currentTz = detectTimezone();

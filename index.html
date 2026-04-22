@@ -11,7 +11,14 @@
     <meta property="og:url" content="https://tools.printmoneylab.com/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="PrintMoneyLab Tools">
+    <meta property="og:image" content="https://tools.printmoneylab.com/la28-schedule-your-timezone/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="PrintMoneyLab Tools - LA 2028 Olympics Interactive Tools">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LA 2028 Olympics Interactive Tools">
+    <meta name="twitter:description" content="Free interactive tools for the LA 2028 Summer Olympics.">
+    <meta name="twitter:image" content="https://tools.printmoneylab.com/la28-schedule-your-timezone/og-image.png">
     <meta name="robots" content="index, follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,7 +47,20 @@
             --text-muted: #6b6e82;
             --accent: #d4a843;
             --accent-glow: rgba(212, 168, 67, 0.15);
+            --medal-gold: #f4c542;
             --border: rgba(255,255,255,0.06);
+            --border-strong: rgba(255,255,255,0.12);
+
+            /* Olympic ring colors */
+            --ring-blue: #0085c7;
+            --ring-yellow: #f4c300;
+            --ring-green: #009f3d;
+            --ring-red: #df0024;
+
+            /* LA palette */
+            --la-sunset: #ff6b35;
+            --la-ocean: #00a7c6;
+
             --radius: 12px;
             --radius-lg: 20px;
         }
@@ -90,23 +110,48 @@
         }
 
         .hero {
-            padding: 140px 24px 70px;
+            padding: 140px 24px 80px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
         }
         .hero::before {
             content: '';
             position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-            width: 900px; height: 520px;
-            background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
+            width: 1400px; height: 700px;
+            background:
+                radial-gradient(ellipse 500px 350px at 30% 45%, rgba(0, 133, 199, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 400px 300px at 70% 50%, rgba(244, 195, 0, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 600px 400px at 50% 35%, var(--accent-glow) 0%, transparent 65%);
             pointer-events: none;
+            z-index: 0;
+        }
+        /* Olympic rings decoration (top) */
+        .hero-rings {
+            position: absolute;
+            top: 88px; left: 50%; transform: translateX(-50%);
+            width: 140px; height: 65px;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.5;
+            animation: fadeInDown 0.8s ease-out;
+        }
+        /* LA skyline silhouette (bottom) */
+        .hero-skyline {
+            position: absolute;
+            bottom: -2px; left: 0; right: 0;
+            width: 100%;
+            height: 90px;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.22;
         }
         .hero-badge {
             display: inline-flex; align-items: center; gap: 8px;
             padding: 6px 16px;
             background: var(--bg-card);
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-strong);
             border-radius: 100px;
             font-size: 0.78rem; color: var(--accent);
             font-weight: 600;
@@ -114,38 +159,60 @@
             letter-spacing: 0.6px;
             text-transform: uppercase;
             animation: fadeInDown 0.6s ease-out;
-            position: relative; z-index: 1;
+            position: relative; z-index: 2;
+            backdrop-filter: blur(8px);
         }
         .hero h1 {
             font-family: 'Outfit', sans-serif;
             font-size: clamp(2.2rem, 5.2vw, 3.8rem);
-            font-weight: 700;
-            line-height: 1.12;
+            font-weight: 800;
+            line-height: 1.1;
             margin-bottom: 20px;
             animation: fadeInDown 0.6s ease-out 0.1s both;
-            position: relative; z-index: 1;
+            position: relative; z-index: 2;
+            letter-spacing: -0.02em;
         }
         .hero h1 .highlight {
-            background: linear-gradient(135deg, var(--accent), #e6bc5a);
+            background: linear-gradient(90deg,
+                var(--ring-blue) 0%,
+                var(--ring-yellow) 25%,
+                var(--accent) 50%,
+                var(--ring-green) 75%,
+                var(--ring-red) 100%);
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            animation: gradientShift 8s ease infinite;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
         .hero p {
             font-size: 1.12rem; color: var(--text-secondary);
             max-width: 620px; margin: 0 auto 36px;
             animation: fadeInDown 0.6s ease-out 0.2s both;
-            position: relative; z-index: 1;
+            position: relative; z-index: 2;
         }
         .hero-stats {
             display: flex; justify-content: center; gap: 48px;
             animation: fadeInDown 0.6s ease-out 0.3s both;
-            position: relative; z-index: 1;
+            position: relative; z-index: 2;
+            flex-wrap: wrap;
         }
         .hero-stat { text-align: center; }
         .hero-stat .num {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.8rem; font-weight: 700; color: var(--accent);
+            font-size: 1.8rem; font-weight: 800;
+            line-height: 1;
+            transition: transform 0.3s;
+        }
+        .hero-stat:nth-child(1) .num { color: var(--ring-blue); }
+        .hero-stat:nth-child(2) .num { color: var(--accent); }
+        .hero-stat:nth-child(3) .num { color: var(--ring-green); }
+        .hero-stat:hover .num {
+            transform: scale(1.1);
         }
         .hero-stat .label {
             font-size: 0.78rem; color: var(--text-muted);
@@ -393,6 +460,20 @@
 </nav>
 
 <section class="hero">
+    <!-- Olympic Rings (inspired tribute) -->
+    <svg class="hero-rings" viewBox="0 0 140 65" aria-hidden="true">
+        <circle cx="24" cy="24" r="15" fill="none" stroke="var(--ring-blue)" stroke-width="3.5"/>
+        <circle cx="51" cy="24" r="15" fill="none" stroke="var(--ring-yellow)" stroke-width="3.5"/>
+        <circle cx="78" cy="24" r="15" fill="none" stroke="var(--text-primary)" stroke-width="3.5"/>
+        <circle cx="105" cy="24" r="15" fill="none" stroke="var(--ring-green)" stroke-width="3.5"/>
+        <circle cx="132" cy="24" r="15" fill="none" stroke="var(--ring-red)" stroke-width="3.5"/>
+    </svg>
+
+    <!-- LA skyline silhouette at bottom -->
+    <svg class="hero-skyline" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+        <path fill="var(--accent)" d="M0,80 L0,55 L40,55 L45,40 L50,55 L90,55 L90,35 L115,35 L115,50 L150,50 L155,30 L165,30 L165,50 L200,50 L200,25 L210,25 L215,15 L220,25 L230,25 L230,50 L260,50 L260,40 L290,40 L290,55 L320,55 L320,20 L325,20 L330,10 L335,20 L340,20 L340,55 L380,55 L380,45 L420,45 L420,55 L460,55 L460,30 L465,30 L470,18 L475,30 L480,30 L480,55 L520,55 L520,40 L555,40 L555,55 L595,55 L595,35 L625,35 L625,55 L665,55 L665,28 L675,28 L680,15 L685,28 L695,28 L695,55 L735,55 L735,45 L775,45 L775,55 L815,55 L815,32 L850,32 L850,55 L890,55 L890,20 L895,20 L900,8 L905,20 L910,20 L910,55 L950,55 L950,40 L985,40 L985,55 L1025,55 L1025,30 L1055,30 L1055,55 L1095,55 L1095,25 L1100,25 L1105,12 L1110,25 L1120,25 L1120,55 L1160,55 L1160,45 L1200,45 L1200,55 L1240,55 L1240,35 L1275,35 L1275,55 L1315,55 L1315,22 L1320,22 L1325,10 L1330,22 L1340,22 L1340,55 L1380,55 L1380,50 L1440,50 L1440,80 Z"/>
+    </svg>
+
     <div class="hero-badge">🏅 Road to Los Angeles 2028</div>
     <h1>Interactive Tools for<br><span class="highlight">LA 2028 Olympics</span></h1>
     <p>Free tools built for anyone planning to watch, travel to, or follow the 2028 Summer Olympics in Los Angeles. No signup, no ads that get in the way.</p>
