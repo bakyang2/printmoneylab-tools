@@ -666,6 +666,70 @@ nav {
     font-weight: 600;
 }
 
+/* QUICK NAV JUMP LINKS */
+.quick-nav {
+    max-width: 680px;
+    margin: 24px auto 0;
+    padding: 12px 20px;
+    background: rgba(28, 31, 46, 0.85);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 0.82rem;
+    position: relative;
+    z-index: 3;
+    backdrop-filter: blur(12px);
+}
+.quick-nav-label {
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-right: 4px;
+}
+.quick-nav a {
+    color: var(--text-secondary);
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: all 0.15s;
+    font-weight: 500;
+}
+.quick-nav a:hover {
+    background: rgba(212, 168, 67, 0.1);
+    color: var(--accent);
+}
+
+/* BACK TO TOP */
+.back-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 1px solid var(--border-strong);
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 80;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.back-to-top.visible {
+    display: flex;
+}
+.back-to-top:hover {
+    background: var(--accent);
+    color: #0f1117;
+    transform: translateY(-2px);
+}
+
 /* AD SLOT */
 .ad-slot {
     max-width: 1200px;
@@ -840,6 +904,13 @@ footer {
             <div class="label">Digital Tickets</div>
         </div>
     </div>
+
+    <nav class="quick-nav" aria-label="Page sections">
+        <span class="quick-nav-label">Jump to:</span>
+        <a href="#calculator">💳 Calculator</a>
+        <a href="#presets">📊 Presets</a>
+        <a href="#faq">❓ Q&amp;A</a>
+    </nav>
 </section>
 
 <!-- AD TOP -->
@@ -848,7 +919,7 @@ footer {
 </div>
 
 <!-- CALCULATOR -->
-<section class="calc-section">
+<section class="calc-section" id="calculator">
     <div class="calc-card">
         <h2>Calculate Your Real Total</h2>
         <p class="calc-intro">Enter your ticket price below. Toggle between <strong>face value</strong> (price quoted in news) and <strong>all-in price</strong> (price shown on tickets.la28.org).</p>
@@ -909,7 +980,7 @@ footer {
 </section>
 
 <!-- PRESETS -->
-<section class="presets-section">
+<section class="presets-section" id="presets">
     <h2>Quick Scenarios</h2>
     <p class="intro">Real ticket prices from LA28 Drop 1 (April 2026). Click to load.</p>
     <div class="preset-grid" id="presetGrid">
@@ -1027,6 +1098,8 @@ footer {
     <p>This calculator is an independent tool by <a href="https://printmoneylab.com" target="_blank" rel="noopener noreferrer">PrintMoneyLab</a>. It is not affiliated with, endorsed by, or connected to the LA28 Organizing Committee, the International Olympic Committee, AXS, Eventim, or any official Olympic body. All trademarks belong to their respective owners. Calculation results are estimates based on publicly disclosed information; actual checkout amounts may vary slightly due to currency conversion, payment processing, or optional add-ons.</p>
     <p><em>Last updated: May 2026.</em></p>
 </section>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">↑</button>
 
 <!-- FOOTER -->
 <footer>
@@ -1169,6 +1242,32 @@ document.querySelectorAll('input[name="priceType"]').forEach(r => {
 // Init
 renderPresets();
 calculate();
+
+// Back to top button
+const backToTopBtn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 600) {
+        backToTopBtn.classList.add('visible');
+    } else {
+        backToTopBtn.classList.remove('visible');
+    }
+});
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Smooth scroll for quick-nav jump links
+document.querySelectorAll('.quick-nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+            const offset = 80;
+            const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+    });
+});
 </script>
 
 </body>
