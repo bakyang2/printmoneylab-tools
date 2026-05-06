@@ -114,18 +114,39 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            background: var(--bg-primary);
+        }
+        /* Real photo background (blurred + darkened) */
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: blur(8px) brightness(0.4) saturate(1.1);
+            transform: scale(1.08);
+            z-index: 0;
+            pointer-events: none;
+        }
+        /* Dark overlay for text readability */
+        .hero::after {
+            content: '';
+            position: absolute; inset: 0;
+            background:
+                linear-gradient(180deg, rgba(15, 17, 23, 0.5) 0%, rgba(15, 17, 23, 0.7) 60%, rgba(22, 24, 34, 0.95) 100%);
+            z-index: 0;
+            pointer-events: none;
         }
         .hero::before {
             content: '';
             position: absolute; top: 0; left: 50%; transform: translateX(-50%);
             width: 1400px; height: 700px;
             background:
-                radial-gradient(ellipse 500px 350px at 30% 45%, rgba(0, 133, 199, 0.08) 0%, transparent 60%),
-                radial-gradient(ellipse 400px 300px at 70% 50%, rgba(244, 195, 0, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 500px 350px at 30% 45%, rgba(0, 133, 199, 0.12) 0%, transparent 60%),
+                radial-gradient(ellipse 400px 300px at 70% 50%, rgba(244, 195, 0, 0.08) 0%, transparent 60%),
                 radial-gradient(ellipse 600px 400px at 50% 35%, var(--accent-glow) 0%, transparent 65%);
             pointer-events: none;
-            z-index: 0;
+            z-index: 1;
         }
         /* Olympic rings decoration (top) */
         .hero-rings {
@@ -133,24 +154,15 @@
             top: 88px; left: 50%; transform: translateX(-50%);
             width: 140px; height: 65px;
             pointer-events: none;
-            z-index: 1;
-            opacity: 0.5;
+            z-index: 2;
+            opacity: 0.7;
             animation: fadeInDown 0.8s ease-out;
-        }
-        /* LA skyline silhouette (bottom) */
-        .hero-skyline {
-            position: absolute;
-            bottom: -2px; left: 0; right: 0;
-            width: 100%;
-            height: 90px;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.22;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
         }
         .hero-badge {
             display: inline-flex; align-items: center; gap: 8px;
             padding: 6px 16px;
-            background: var(--bg-card);
+            background: rgba(28, 31, 46, 0.7);
             border: 1px solid var(--border-strong);
             border-radius: 100px;
             font-size: 0.78rem; color: var(--accent);
@@ -159,8 +171,8 @@
             letter-spacing: 0.6px;
             text-transform: uppercase;
             animation: fadeInDown 0.6s ease-out;
-            position: relative; z-index: 2;
-            backdrop-filter: blur(8px);
+            position: relative; z-index: 3;
+            backdrop-filter: blur(12px);
         }
         .hero h1 {
             font-family: 'Outfit', sans-serif;
@@ -169,8 +181,9 @@
             line-height: 1.1;
             margin-bottom: 20px;
             animation: fadeInDown 0.6s ease-out 0.1s both;
-            position: relative; z-index: 2;
+            position: relative; z-index: 3;
             letter-spacing: -0.02em;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
         }
         .hero h1 .highlight {
             background: linear-gradient(90deg,
@@ -183,7 +196,8 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: gradientShift 8s ease infinite;
+            animation: gradientShift 4s ease infinite;
+            text-shadow: none;
         }
         @keyframes gradientShift {
             0%, 100% { background-position: 0% 50%; }
@@ -193,15 +207,19 @@
             font-size: 1.12rem; color: var(--text-secondary);
             max-width: 620px; margin: 0 auto 36px;
             animation: fadeInDown 0.6s ease-out 0.2s both;
-            position: relative; z-index: 2;
+            position: relative; z-index: 3;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
         }
         .hero-stats {
             display: flex; justify-content: center; gap: 48px;
             animation: fadeInDown 0.6s ease-out 0.3s both;
-            position: relative; z-index: 2;
+            position: relative; z-index: 3;
             flex-wrap: wrap;
         }
-        .hero-stat { text-align: center; }
+        .hero-stat {
+            text-align: center;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+        }
         .hero-stat .num {
             font-family: 'Outfit', sans-serif;
             font-size: 1.8rem; font-weight: 800;
@@ -460,6 +478,9 @@
 </nav>
 
 <section class="hero">
+    <!-- LA real photo background (blurred + darkened via CSS) -->
+    <img class="hero-bg" src="/la-hero.jpg" alt="" loading="eager" fetchpriority="high">
+
     <!-- Olympic Rings (inspired tribute) -->
     <svg class="hero-rings" viewBox="0 0 140 65" aria-hidden="true">
         <circle cx="24" cy="24" r="15" fill="none" stroke="var(--ring-blue)" stroke-width="3.5"/>
@@ -467,11 +488,6 @@
         <circle cx="78" cy="24" r="15" fill="none" stroke="var(--text-primary)" stroke-width="3.5"/>
         <circle cx="105" cy="24" r="15" fill="none" stroke="var(--ring-green)" stroke-width="3.5"/>
         <circle cx="132" cy="24" r="15" fill="none" stroke="var(--ring-red)" stroke-width="3.5"/>
-    </svg>
-
-    <!-- LA skyline silhouette at bottom -->
-    <svg class="hero-skyline" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
-        <path fill="var(--accent)" d="M0,80 L0,55 L40,55 L45,40 L50,55 L90,55 L90,35 L115,35 L115,50 L150,50 L155,30 L165,30 L165,50 L200,50 L200,25 L210,25 L215,15 L220,25 L230,25 L230,50 L260,50 L260,40 L290,40 L290,55 L320,55 L320,20 L325,20 L330,10 L335,20 L340,20 L340,55 L380,55 L380,45 L420,45 L420,55 L460,55 L460,30 L465,30 L470,18 L475,30 L480,30 L480,55 L520,55 L520,40 L555,40 L555,55 L595,55 L595,35 L625,35 L625,55 L665,55 L665,28 L675,28 L680,15 L685,28 L695,28 L695,55 L735,55 L735,45 L775,45 L775,55 L815,55 L815,32 L850,32 L850,55 L890,55 L890,20 L895,20 L900,8 L905,20 L910,20 L910,55 L950,55 L950,40 L985,40 L985,55 L1025,55 L1025,30 L1055,30 L1055,55 L1095,55 L1095,25 L1100,25 L1105,12 L1110,25 L1120,25 L1120,55 L1160,55 L1160,45 L1200,45 L1200,55 L1240,55 L1240,35 L1275,35 L1275,55 L1315,55 L1315,22 L1320,22 L1325,10 L1330,22 L1340,22 L1340,55 L1380,55 L1380,50 L1440,50 L1440,80 Z"/>
     </svg>
 
     <div class="hero-badge">🏅 Road to Los Angeles 2028</div>
