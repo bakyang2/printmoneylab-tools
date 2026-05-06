@@ -13,6 +13,12 @@ This site provides timezone conversion, schedule browsing, and ticket cost tools
 - Features: Auto timezone detection, filter by sport/date/medals, 40+ city timezones
 - Schedule data file: https://tools.printmoneylab.com/la28-schedule-your-timezone/schedule.json
 
+### LA 2028 Ticket Cost Calculator
+- URL: https://tools.printmoneylab.com/la28-ticket-fee-calculator/
+- Purpose: Calculate real total ticket cost including the 24% LA28 service fee
+- Features: Face value ↔ all-in price conversion, quantity multiplier, 8 preset scenarios
+- Key facts: 24% service fee on all tickets, no delivery fee (digital tickets only), all-in price includes California taxes
+
 ## Key Facts (LA 2028 Olympics)
 
 - Opening Ceremony: Friday, July 14, 2028 (SoFi Stadium + LA Memorial Coliseum)
